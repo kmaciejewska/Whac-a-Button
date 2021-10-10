@@ -1,4 +1,4 @@
-**Whac-a-Button**
+#Whac-a-Button
 
 **REPORT**
 Thursday 10:15-12:00 Lab
@@ -63,7 +63,7 @@ Date: 20.05.2020
 
 ## 2.1 General Description
 
-![99073834_600149690620410_7071885822932287488_n.jpg](RackMultipart20211010-4-1ce2hag_html_232d178d055ab0b9.gif) ![](RackMultipart20211010-4-1ce2hag_html_1ab932cdafa433f3.jpg)
+	![2.1](/images/2.1img1.png)	![2.1](/images/2.1img2.png)
 
 The project is a simple game to test user&#39;s reflex and time of reaction, similar to the classic Whack-a-Mole arcade game. This is the button edition – Whack-a-Button. In a nutshell, the player must strike the buttons as they light up and has a limited time to do so.
 
