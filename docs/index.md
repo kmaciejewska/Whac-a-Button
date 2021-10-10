@@ -1,4 +1,4 @@
-#Whac-a-Button
+**Whac-a-Button**
 
 **REPORT**
 Thursday 10:15-12:00 Lab
