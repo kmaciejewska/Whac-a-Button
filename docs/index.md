@@ -200,14 +200,15 @@ void HardwareSerial::begin(unsigned long baud, byte config) {
 
 In order to view the contents of messages, we are utilizing Serial.print() or a mixture of it with Serial.write() in case of EEPROM reading. Both functions take as an argument a series of characters or a number. The difference between the two is that Serial.write() converts numbers in decimal form to ASCII codes. The exemplary message received by the user after finishing the game, viewed in the Serial Monitor:
 
+![3.3](./images/3.3img1.png)
 
 Which is achieved by the following function, called in the main game sequence, after the game is finished:
 
-![](RackMultipart20211010-4-1ce2hag_html_8ad1d7a0a88b3a48.png)
+![3.3](./images/3.3img2.png)
 
 And the output read from the &#39;leader board&#39; stored on the EEPROM. As we can see, the previous user appeared on the list:
 
-![](RackMultipart20211010-4-1ce2hag_html_287372190a9430ee.png)
+![3.3](./images/3.3img3.png)
 
 Achieved by reading the EEPROM and printing the results:
 
@@ -259,9 +260,10 @@ This functionality, as well as timer-based delays multiply used in our program, 
 
 In our project we are using a Nokia 48x84 pixels matrix monochrome LCD with PCD8544 controller. Both the functionalities of LCD and rotary encoder are combined to create a simple user interface for starting to play the game, viewing the contents of the &#39;leader board&#39; stored on the EEPROM, choosing a username and game level.
 
-![100195011_245359510085200_7916349983295537152_n.jpg](RackMultipart20211010-4-1ce2hag_html_3fe57c170f20ac81.gif)
-
-![](RackMultipart20211010-4-1ce2hag_html_4fe2461e2db14674.jpg) ![100623007_177996563587329_8005752137038430208_n.jpg](RackMultipart20211010-4-1ce2hag_html_26258f8a54a668b6.gif) ![100623345_661345671082729_7640818193350524928_n.jpg](RackMultipart20211010-4-1ce2hag_html_41066b255cca18c1.gif) ![](RackMultipart20211010-4-1ce2hag_html_9ed9594267690f8a.jpg)
+![3.5](./images/3.5img1.png)
+![3.5](./images/3.5img2.png)
+![3.5](./images/3.5img3.png)
+![3.5](./images/3.5img4.png)
 
 The LCD device communicates using the SPI bus. In order to drive the display we are using the _Adafruit PCD8544 Nokia 5110 LCD Library_ ([4]), which also requires the _Adafruit GFX Graphics_ _Library_ ([5]) in order to function properly, as well as the built-in _Arduino SPI library_ ([6]). According to the datasheet, the device operates in the range of 2.7 – 3.3V and has 3V logic level, so it should be used simultaneously with a logic level shifter or resistors. The PCD8544 driver has a built-in 504 bytes GDDRAM, organized in 6 banks each containing 84 columns with each column able to store 8 bits. Each bit represents a single pixel.
 
@@ -443,7 +445,7 @@ Selecting the game level is handled in a similar manner, only displaying numbers
 
 ## 3.6 IR receiver
 
-![](RackMultipart20211010-4-1ce2hag_html_d4717e5a5e597807.jpg)
+![3.6](./images/3.6img1.png)
 
 In order to switch the game on/off we are using infrared communication – by means of a TSOP31236 infrared receiver module (works at 36kHz), the _IRremote Arduino Library_ ([7])andany type of a remote controller it is possible to control the peripheral devices. First, we have to initialize an object of the library, specifying the pin, to which the receiver is connected (in our program an analog one, due to the lack of digital pins):
 
@@ -623,7 +625,7 @@ Therefore, the buzzer pins are set to OUTPUT, and depending on the frequency val
 
 ## 3.8 LED Arcade Buttons
 
-![](RackMultipart20211010-4-1ce2hag_html_4e9776302d81f8f3.jpg) ![](RackMultipart20211010-4-1ce2hag_html_93745d5406ce4929.jpg)
+![3.8](./images/3.8img1.png)
 
 As the name suggests, out buttons are comprised of two parts – a button itself and a LED inside. Thus, one button in fact requires 2 pins from the UNO board – one for the button, and one for the LED. For the sake of saving us some of the digital pins, we have created a voltage divider circuit (one 1K Ohm resistor and 3 10K resistors) in order to connect the buttons to just one analog pin. This comes with a restriction – there have to be already defined voltage values of each button mapped into integer range and obtained by means of the analogRead() function. Thus, we first used Serial Monitor and the following method, to read the value of each button:
 
@@ -738,7 +740,7 @@ Both checkBtnsStates() and updateFlasher() functions must be called in the main 
 
 ## 3.9 Rotary encoder
 
-![](RackMultipart20211010-4-1ce2hag_html_ead3124319bbe31a.jpg)
+![3.9](./images/3.9img1.png)
 
 The rotary encoder we are using is an incremental one, which means that it generates an electrical signal according to the rotation movement and its output is a series of square waves pulses. The encoder has two outputs – A and B, which are 90 degrees out of phase with respect to each other. When the disk is rotated, the pins will contact the common pin and generate those wave outputs. Using this knowledge, one may determine both the rotation position and the direction. If we are rotating the knob clockwise – output A will be ahead of B, so at the time when signal changes, A and B will have opposite values. Conversely, if we are rotating the knob in a counterclockwise manner, the values will be equal. We are utilizing those facts in the ISR routine (described in section 3.1). Our encoder has an internal pulse counter which we are incrementing – or decrementing – accordingly:
 
@@ -994,11 +996,11 @@ Open source: [https://github.com/z3t0/Arduino-IRremote](https://github.com/z3t0/
 
 The project uses one board and one program. We did not discuss the main game sequence in such detail, since it mainly comprises of, and combines, the functionalities of our peripheral devices. The loop function mainly updates the peripherals&#39; states and checks for the remote controller input:
 
-![](RackMultipart20211010-4-1ce2hag_html_4cc17f4e2c170d57.png)
+![6](./images/6img1.png)
 
 Only the checkNextGameStep() function switches the state of the game depending on user interaction:
 
-![](RackMultipart20211010-4-1ce2hag_html_ac5fd4f69b871f60.png)
+![6](./images/6img2.png)
 
 The main game sequence is contained in the playGame() function, which is responsible for turning random lights on and off – if the correct button was pressed, checking whether a correct button was pressed, and if it was performed in the required time, as well as activating and disactivating the timer for measuring the reaction time and incrementing the score counter, if necessary. The randomness is achieved by initializing the pseudo-random number generator initializing it with a random input from the analogRead on an unconnected pin:
 
