@@ -80,7 +80,13 @@ The game sequence is started only after the system is switched on – the user m
 Various general-purpose input and output pins are used in the project to control the peripherals. In case of the digital pins, the general procedure is to first configure the specified pin to behave as INPUT, INPUT\_PULLUP or OUTPUT by means of pinMode() function. The INPUT\_PULLUP mode is used for the rotary encoder&#39;s switch pin in order to enable internal pullup resistors, which are otherwise explicitly disabled with just INPUT. If the pin has been configured as OUTPUT, its voltage is set to either logical state HIGH (5V) or LOW (0V) using the digitalWrite() function. The exact state of the pin may be read back by the digitalRead() method. All these functions are used in our program.
  The configuration of the LED pins is as follows:
 
-![](RackMultipart20211010-4-1ce2hag_html_92251f0dccba1b4c.gif)
+```
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "age": 25
+}
+```
 
 And to write a HIGH or LOW (turn it on or off) value to it:
 
