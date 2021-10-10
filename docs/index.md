@@ -63,7 +63,7 @@ Date: 20.05.2020
 
 ## 2.1 General Description
 
-	![2.1](/images/2.1img1.png)	![2.1](/images/2.1img2.png)
+	![2.1](./images/2.1img1.png)	![2.1](./images/2.1img2.png)
 
 The project is a simple game to test user&#39;s reflex and time of reaction, similar to the classic Whack-a-Mole arcade game. This is the button edition – Whack-a-Button. In a nutshell, the player must strike the buttons as they light up and has a limited time to do so.
 
